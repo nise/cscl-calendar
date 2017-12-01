@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -140,12 +141,12 @@
             .door {
                 width: auto;
                 min-height: 80px;
-                display:block;
+                display: block;
             }
             .description {
                 position: absolute;
                 left: 40px;
-                margin-left:30px;
+                margin-left: 30px;
                 font-size: 1em;
             }
         }
@@ -156,7 +157,7 @@
     <div id="cal" class="container row"></div>
     <div hidden id="template">
         <div class="col-md-3 col-sm-3 col-xs-6 door closed">
-            <a href="javascript:void();" data-toggle="tooltip" title="Vorfreude, schönste Freude! Haben Sie noch etwas Geduld.">
+            <a href="#" data-toggle="tooltip" title="Vorfreude, schönste Freude! Haben Sie noch etwas Geduld.">
                 <h2></h2>
                 <span class="description"></span>
             </a>
@@ -172,7 +173,7 @@
     <script>
         var presents = [
             ['Easter Egg', 'dev', 'https://heise.de/', 'Hello dude!'],
-            ['Live Coding', 'dev', 'https://vimeo.com/132813228', 'Live Coding ist eine außerordentliche Form der synchronen Kooperation und Improvisation zwischen Musikern, die traditionelle und digitale Instrumente verwenden bzw. in letzteren Fall sogar on the fly programmieren.'],
+            ['Live Coding', 'dev', 'https://vimeo.com/132813228', 'Live Coding ermöglicht eine außerordentliche Form der synchronen Kooperation und Improvisation zwischen Musikern, die traditionelle und digitale Instrumente verwenden bzw. in letzteren Fall sogar on the fly programmieren.'],
             ['Design Thinking', 'design', 'http://www.designkit.org/methods', 'Design Thinking ist einerseits ein Buzzword in der Business Welt und andererseits ein alter Hut. Als Gestalterinnen von kooperativen Systemen sollten Sie einige der Methoden kennen und anwenden können.'],
             ['Sketching', 'design', 'https://medium.com/design-voices/the-pen-is-mightier-than-the-laptop-2d057d3d5b7d', 'In den Übungen der ersten beiden Kurseinheiten haben sich leider nur weniger von Ihnen mit Sketches von Benutzerschnittstellen versucht. Dieser Beitrag soll Ihnen das Thema noch einmal näher bringen, damit Sie sich auf die Prüfung vorbereiten können.'],
             ['Interaction Flows', 'design', 'https://uxplanet.org/an-introduction-to-interaction-flows-a4f783402529', 'Interaction Flows erweitern Sketches von einzelnen GUI-Ansichten, so dass man die Benutzerführung sogar in komplexen Anwendung entwerfen kann.'],
@@ -214,9 +215,9 @@ http://www.lowtechmagazine.com/
         */
 
         (function ($) {
-            var arr = [9, 12, 5, 23, 11, 24, 17, 8, 14, 16, 2, 15, 20, 19, 21, 18, 6, 1, 7, 22, 3, 10, 4, 13]; 
+            var arr = [9, 12, 5, 23, 11, 24, 17, 8, 14, 16, 2, 15, 20, 19, 21, 18, 6, 1, 7, 22, 3, 10, 4, 13];
             //Array.from(Array(25).keys());
-            
+
             var opened_doors = []
             // access local storage
             if (typeof (Storage) !== "undefined") {
@@ -246,7 +247,7 @@ http://www.lowtechmagazine.com/
                 }
                 $('#cal').append(el);
             }
-            $('.door').on('mouseout',function(){
+            $('.door').on('mouseout', function () {
                 $('.closed, .opened').tooltip('hide');
             });
             // capture events
@@ -270,6 +271,16 @@ http://www.lowtechmagazine.com/
                         opened_doors[num] = true;
                         localStorage.setItem("calendar", opened_doors);
                     }
+                }
+            });
+            $('.open').click(function (e) {
+                var num = $(this).attr('id').replace('field', '');
+                if (num <= day) {
+                    $(this).find('a')
+                        .attr('href', presents[num][2])
+                        .attr('title', presents[num][0])
+                        .attr('target', 'new')
+                        ;
                 }
             });
             $('[data-toggle="tooltip"]').tooltip({
@@ -307,4 +318,5 @@ http://www.lowtechmagazine.com/
         }
     </script>
 </body>
+
 </html>
