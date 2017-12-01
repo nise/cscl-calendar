@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: none;
+            background-color: #333;
+        }
+
+        .row {
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        a {
+            color: #fff;
+            font-size: .8em;
+            text-decoration: none;
+        }
+
+        a:hover,
+        .open:hover h2,
+        a:active,
+        .open:active h2 {
+            text-decoration: none;
+            color: lightblue;
+            opacity: 1;
+        }
+
+        .description {
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            font-size: 1.2em;
+        }
+
+        .open {
+            cursor: pointer;
+        }
+
+        .open h2 {
+            color: #fff;
+            opacity: .3;
+            display: inline;
+        }
+
+        .closed {
+            background-color: #555;
+            cursor: auto;
+        }
+
+        #cal {
+            width: 100%;
+            height: 100vh;
+            overflow: none;
+            background: url("banksy-flavor.jpg") no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            overflow: none;
+        }
+
+        .door {
+            display: block;
+            margin: 0;
+            padding: 4px;
+            border: dotted 1px #555;
+        }
+
+        .door a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tooltip-inner {
+
+            /* If max-width does not work, try using width instead */
+            width: 150%;
+            font-size: 0.8em;
+        }
+
+        @media all and (max−width: 1199px) {
+            #cal {
+                width: 100%;
+                height: 100vh;
+                overflow: none;
+            }
+            .door {
+                width: auto;
+                height: 16.6667vh;
+            }
+        }
+
+        @media all and (max−width: 991px) {
+            #cal {
+                width: 100%;
+                height: 100vh;
+            }
+        }
+
+        @media all and (max−width: 768px) {
+            #cal {
+                width: 100%;
+                height: 100vh;
+                background: url("banksy-flavor.jpg") no-repeat;
+            }
+            .door {
+                width: auto;
+                height: 33.33vh;
+            }
+            .description {
+                position: absolute;
+                left: 40px;
+                font-size: 1em;
+            }
+        }
+
+        @media all and (max−width: 575px) {
+            #cal {
+                width: 100%;
+                height: 100vh;
+                background: url("banksy-flavor.jpg") repeat-y;
+            }
+            .door {
+                width: auto;
+                min-height: 80px;
+                display:block;
+            }
+            .description {
+                position: absolute;
+                left: 40px;
+                margin-left:30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cal" class="container row"></div>
+    <div hidden id="template">
+        <div class="col-md-3 col-sm-3 col-xs-6 door closed">
+            <a href="javascript:void();" data-toggle="tooltip" title="Vorfreude, schönste Freude! Haben Sie noch etwas Geduld.">
+                <h2></h2>
+                <span class="description"></span>
+            </a>
+        </div>
+    </div>
+    jQuery first, then Tether, then Bootstrap JS.
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <!--
+    <script src="jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+     -->
+    <script>
+        var presents = [
+            ['Easter Egg', 'dev', 'https://heise.de/', 'Hello dude!'],
+            ['Live Coding', 'dev', 'https://vimeo.com/132813228', 'Live Coding ist eine außerordentliche Form der synchronen Kooperation und Improvisation zwischen Musikern, die traditionelle und digitale Instrumente verwenden bzw. in letzteren Fall sogar on the fly programmieren.'],
+            ['Design Thinking', 'design', 'http://www.designkit.org/methods', 'Design Thinking ist einerseits ein Buzzword in der Business Welt und andererseits ein alter Hut. Als Gestalterinnen von kooperativen Systemen sollten Sie einige der Methoden kennen und anwenden können.'],
+            ['Sketching', 'design', 'https://medium.com/design-voices/the-pen-is-mightier-than-the-laptop-2d057d3d5b7d', 'In den Übungen der ersten beiden Kurseinheiten haben sich leider nur weniger von Ihnen mit Sketches von Benutzerschnittstellen versucht. Dieser Beitrag soll Ihnen das Thema noch einmal näher bringen, damit Sie sich auf die Prüfung vorbereiten können.'],
+            ['Interaction Flows', 'design', 'https://uxplanet.org/an-introduction-to-interaction-flows-a4f783402529', 'Interaction Flows erweitern Sketches von einzelnen GUI-Ansichten, so dass man die Benutzerführung sogar in komplexen Anwendung entwerfen kann.'],
+            ['Buxton Collection', 'dev', 'http://research.microsoft.com/en-us/um/people/bibuxton/buxtoncollection/', 'Eingabegeräte zu sammeln mag ein seltsames Hobby sein, jedoch verschafft uns diese Sammlung einen Einblick in die Technikgeschichte und die Ursprünge mancher GUI-Konzepte.'],
+            ['Ways of Knowing', 'book', 'https://pdfs.semanticscholar.org/9fa9/7b46cb3e537ed97a47c935733821d44c9dfd.pdf#page=423', 'Der Nikolaus bringt hier ein umfassendes Buch über Forschungsmothen in der Mensch-Computer-Interaktion.'],
+            ['Think aloud', 'usability', 'https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/', 'Think aloud ist eine der wichtigsten Methoden, um die Bedienbarkeit von Anwendungen zu diagnostizieren und Usability Fehler frühzeitig beheben zu können.'],
+            ['Resilient Communities', 'evaluation', 'https://dl.acm.org/citation.cfm?id=2512946', 'In Kurseinheit 3 haben wir uns viel mit dem Aufbau von Communities beschäftigt. Wie man jedoch den Niedergang von Gemeinschaften erkennen kann, ist in diesem Paper dargelegt.'],
+            ['User Experience Questionaire', 'usability', 'http://www.ueq-online.org/', 'Wer schon immer mal wissen wollte, ob das selbst fabrizierte UI auf die Nutzer erfrischend oder einschläfernd wirkt, kann diesen Fragebogen zur Evaluation einsetzen.'],
+            ['Visual Complexity', 'dev', 'http://www.visualcomplexity.com/vc/', 'Kooperative Prozesse können komplex sein. Manchmal kann es helfen, die Vorgänge in einer Anwendung durch Datengrafiken zu visualisieren. Auf dieser Webseite erweitert womöglich ihren Horizont für verschiedene Arten und Ausprägungen von Visualisierungen.'],
+            ['Gini Index', 'evaluation', 'https://sites.google.com/site/rmartinezmaldonado2/UMAP21april2011_kySUBMIT.pdf', 'Die ungleiche Verteilung von Einkommen in der Welt lässt sich mit Hilfe des Gini-Index quantifizieren und mit Lorenzkurven veranschaulichen. Dieser Beitrag zeigt wie der Gini-Index auch zum Vergleich der Gruppenperformanz genutzt werden kann.'],
+            ['Orchestration Graphs', 'method', 'https://www.youtube.com/watch?v=t8KCC6CMst0', 'Wie man skalierbare kollaborative Lernszenarien grafisch modellieren kann, zeigt Pierre Dillenbourgh in diesem Vortrag.'],
+            ['WebRTC', 'dev', 'https://youtu.be/ieBtXwHvoNk', 'Mit Hilfe von WebRTC lassen sich Text-, Audio- und Videocaht im Browser realisieren.'],
+            ['KioskNet', 'dev', 'https://www.youtube.com/watch?v=i_3nANGBSb0', 'An vielen bewohnten Gegenden der Welt ist kein Internet verfügbar. Wie man unter diesen Bedingungen mit Hilfe des Store and Forward Prinzips kommunizieren kann, wird in diesem Vortrag über das KioskNet erläutert.'],
+            ['Interaktionsanalyse', 'evaluation', 'heise.de'],
+            ['CORDTRA', 'evaluation', 'heise.de'],
+            ['SUS', 'usability', 'heise.de'],
+            ['P2P', 'dev', 'https://heise.de/'],
+            ['Weka', 'dev', 'https://heise.de/'],
+            ['Gephi', 'dev', 'https://heise.de/'],
+            ['33', 'dev', 'https://heise.de/'],
+            ['Offline Cookbook', 'dev', 'https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/', 'In Kurseinheit 7 lernen Sie Progressive Web Apps kennen. Dieses Kochbuch soll Ihren App_etit für Offline-fähige Apps anregen.'],
+            ['Hiroshi Ishii', 'dev', 'https://www.youtube.com/watch?v=RtHmsFL-b-8', 'Diese Keynote von Hiroshi Ishii bietet einen Vorgeschmack auf Kurseinheit 7, in der wir uns mit dem Ubiquitous Computing beschäftigigen.'],
+            ['The Social Machine', 'talk', 'https://www.youtube.com/watch?v=sjuK7I-A4os&t=2118s', 'In Kurseinheit 4 hatten wir uns mit der Signaling Theorie von Judith Donath beschäftigt. In diesem Video stellt sich ihr Buch The Social Machines vor und berichtet über zahlreiche Projekte mit ihren Studierenden.']
+        ];
+        /*
+https://vimeo.com/226282830
+
+        Greenberg, S., Marquardt, N., Ballendat, T., Diaz-Marino, R., and Wang, M. (2011) Proxemic
+Interactions: The New Ubicomp? ACM Interactions, 18(1):42-50. ACM, January-February.
+http://doi.acm.org/10.1145/1897239.1897250.
+
+   //https://www.startuprocket.com/articles/how-to-create-a-user-experience-flow-chart-ux-flow-chart
+        //http://practicaluxmethods.com/product/wireflows/
+
+thinklets
+
+http://www.lowtechmagazine.com/
+
+        */
+
+
+        (function ($) {
+            var arr = [9, 12, 5, 23, 11, 24, 17, 8, 14, 16, 2, 15, 20, 19, 21, 18, 6, 1, 7, 22, 3, 10, 4, 13]; 
+            //Array.from(Array(25).keys());
+            
+            var opened_doors = []
+            // access local storage
+            if (typeof (Storage) !== "undefined") {
+                opened_doors = localStorage.getItem("calendar") === null || undefined ? '' : localStorage.getItem("calendar");
+                opened_doors = opened_doors.split(',')
+            }
+            var day = 14;//new Date().getDate();
+
+            for (var i = 0; i < 24; i++) {
+                var el = $('#template div').clone();
+                var num = arr[i];
+
+                el.attr('id', 'field' + num).find('h2').text(num);
+                if (num > day) {
+                    el.addClass('closed');
+                    el.removeClass('open');
+                } else if ((num <= day && opened_doors[num] === 'true') || new Date().getMonth() !== 11) {
+                    el.removeClass('closed');
+                    el.addClass('open');
+                    el.find('a')
+                        .removeAttr('title');
+                    el.find('a')
+                        .attr('title', presents[num][3])
+                        .data('toggle', 'tooltip');
+
+                    el.find('.description').text(presents[num][0]);
+                }
+                $('#cal').append(el);
+            }
+            // capture events
+            $('.closed').click(function (e) {
+                var num = Number($(this).attr('id').replace('field', ''));
+
+                if (num <= day) {
+                    $(this).removeClass('closed');
+                    $(this).addClass('open');
+                    $('.open').click(function (e) {
+                        var num = $(this).attr('id').replace('field', '');
+                        if (num <= day) {
+                            $(this).find('a')
+                                .attr('href', presents[num][2])
+                                .attr('title', presents[num][0])
+                                .attr('target', 'new')
+                                ;
+                        }
+                    });
+                    $(this).find('.description').text(presents[num][0]);
+                    if (typeof (Storage) !== "undefined") {
+                        opened_doors[num] = true;
+                        localStorage.setItem("calendar", opened_doors);
+                    }
+                }
+            });
+            $('[data-toggle="tooltip"]').tooltip({
+                animation: true,
+                delay: { show: 600, hide: 100 },
+                placement: function (context, element) {
+                    var position = $(element).parent().position();
+                    if (position.top < (window.innerHeight / 2)) {
+                        return "bottom";
+                    }
+                    return "top";
+                }
+            });
+
+        })(jQuery)
+
+        function shuffleArray(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return array;
+        }
+
+        function CaesarCipher(str, num) {
+            str = str.toLowerCase();
+            var result = '';
+            var charcode = 0;
+            for (var i = 0; i < str.length; i++) {
+                charcode = (str[i].charCodeAt()) + num;
+                result += String.fromCharCode(charcode);
+            }
+            return result;
+        }
+
+        //alert(CaesarCipher('vguv', -2));
+
+
+    </script>
+</body>
+
+</html>
