@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
         crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-        crossorigin="anonymous">-->
     <style>
         body {
             margin: 0;
@@ -37,7 +31,9 @@
         a:hover,
         .open:hover h2,
         a:active,
-        .open:active h2 {
+        .open:active h2,
+        a:focus,
+        .open:focus a {
             text-decoration: none;
             color: lightblue;
             opacity: 1;
@@ -173,12 +169,6 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
-    <!--
-    <script src="jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
-        crossorigin="anonymous"></script>
-    <script src="tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-     -->
     <script>
         var presents = [
             ['Easter Egg', 'dev', 'https://heise.de/', 'Hello dude!'],
@@ -223,7 +213,6 @@ http://www.lowtechmagazine.com/
 
         */
 
-
         (function ($) {
             var arr = [9, 12, 5, 23, 11, 24, 17, 8, 14, 16, 2, 15, 20, 19, 21, 18, 6, 1, 7, 22, 3, 10, 4, 13]; 
             //Array.from(Array(25).keys());
@@ -257,10 +246,12 @@ http://www.lowtechmagazine.com/
                 }
                 $('#cal').append(el);
             }
+            $('.door').on('mouseout',function(){
+                $('.closed, .opened').tooltip('hide');
+            });
             // capture events
             $('.closed').click(function (e) {
                 var num = Number($(this).attr('id').replace('field', ''));
-
                 if (num <= day) {
                     $(this).removeClass('closed');
                     $(this).addClass('open');
@@ -292,7 +283,6 @@ http://www.lowtechmagazine.com/
                     return "top";
                 }
             });
-
         })(jQuery)
 
         function shuffleArray(array) {
@@ -315,11 +305,6 @@ http://www.lowtechmagazine.com/
             }
             return result;
         }
-
-        //alert(CaesarCipher('vguv', -2));
-
-
     </script>
 </body>
-
 </html>
