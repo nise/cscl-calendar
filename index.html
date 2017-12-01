@@ -223,7 +223,7 @@ http://www.lowtechmagazine.com/
                 opened_doors = localStorage.getItem("calendar") === null || undefined ? '' : localStorage.getItem("calendar");
                 opened_doors = opened_doors.split(',')
             }
-            var day = 14;//new Date().getDate();
+            var day = new Date().getDate();
 
             for (var i = 0; i < 24; i++) {
                 var el = $('#template div').clone();
