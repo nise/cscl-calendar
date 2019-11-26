@@ -184,7 +184,7 @@
             ['Visual Complexity', 'dev', 'http://www.visualcomplexity.com/vc/', 'Kooperative Prozesse können komplex sein. Manchmal kann es helfen, die Vorgänge in einer Anwendung durch Datengrafiken zu visualisieren. Auf dieser Webseite erweitert womöglich ihren Horizont für verschiedene Arten und Ausprägungen von Visualisierungen.'],
             ['Gini Index', 'evaluation', 'https://sites.google.com/site/rmartinezmaldonado2/UMAP21april2011_kySUBMIT.pdf', 'Die ungleiche Verteilung von Einkommen in der Welt lässt sich mit Hilfe des Gini-Index quantifizieren und mit Lorenzkurven veranschaulichen. Dieser Beitrag zeigt wie der Gini-Index auch zum Vergleich der Gruppenperformanz genutzt werden kann.'],
             ['Orchestration Graphs', 'method', 'https://www.youtube.com/watch?v=t8KCC6CMst0', 'Wie man skalierbare kollaborative Lernszenarien grafisch modellieren kann, zeigt Pierre Dillenbourgh in diesem Vortrag.'],
-            ['WebRTC', 'dev', 'https://youtu.be/ieBtXwHvoNk', 'Mit Hilfe von WebRTC lassen sich Text-, Audio- und Videocaht im Browser realisieren.'],
+            ['WebRTC', 'dev', 'https://youtu.be/ieBtXwHvoNk', 'Mit Hilfe von WebRTC lassen sich Text-, Audio- und Videochat im Browser realisieren.'],
             ['KioskNet', 'dev', 'https://www.youtube.com/watch?v=i_3nANGBSb0', 'An vielen bewohnten Gegenden der Welt ist kein Internet verfügbar. Wie man unter diesen Bedingungen mit Hilfe des Store and Forward Prinzips kommunizieren kann, wird in diesem Vortrag über das KioskNet erläutert.'],
             ['Technology Probes', 'evaluation', 'https://www.youtube.com/watch?v=xbQCM3Fmw_s', ''],
             ['Probes for Senior People', 'technology', 'https://www.youtube.com/watch?v=yCXxQ51dlO0', ''],
@@ -224,7 +224,7 @@ http://www.lowtechmagazine.com/
                 opened_doors = opened_doors.split(',')
             }
             var day = new Date().getDate();
-
+            var month = (new Date()).getMonth;
             for (var i = 0; i < 24; i++) {
                 var el = $('#template div').clone();
                 var num = arr[i];
@@ -233,7 +233,7 @@ http://www.lowtechmagazine.com/
                 if (num > day) {
                     el.addClass('closed');
                     el.removeClass('open');
-                } else if ((num <= day && opened_doors[num] === 'true') || new Date().getMonth() !== 11) {
+                } else if ((num <= day && opened_doors[num] === 'true') || month === 11) {
                     el.removeClass('closed');
                     el.addClass('open');
                     el.find('a')
